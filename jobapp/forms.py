@@ -85,12 +85,12 @@ class JobForm(forms.ModelForm):
             raise forms.ValidationError("Service is required")
         return job_type
 
-    def clean_category(self):
-        category = self.cleaned_data.get('category')
+    # def clean_category(self):
+    #     category = self.cleaned_data.get('category')
 
-        if not category:
-            raise forms.ValidationError("category is required")
-        return category
+    #     if not category:
+    #         raise forms.ValidationError("category is required")
+    #     return category
 
 
     def save(self, commit=True):
@@ -195,12 +195,12 @@ class JobEditForm(forms.ModelForm):
             raise forms.ValidationError("Job Type is required")
         return job_type
 
-    def clean_category(self):
-        category = self.cleaned_data.get('category')
+    # def clean_category(self):
+    #     category = self.cleaned_data.get('category')
 
-        if not category:
-            raise forms.ValidationError("Category is required")
-        return category
+    #     if not category:
+    #         raise forms.ValidationError("Category is required")
+    #     return category
 
 
     def save(self, commit=True):
