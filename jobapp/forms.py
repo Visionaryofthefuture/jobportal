@@ -19,7 +19,7 @@ class JobForm(forms.ModelForm):
         self.fields['description'].label = "Job Description :"
         self.fields['tags'].label = "Tags :"
         self.fields['last_date'].label = "Submission Deadline :"
-        self.fields['company_name'].label = "Company Name :"
+        self.fields['company_name'].label = "University Name :"
         self.fields['url'].label = "Website :"
 
 
@@ -35,7 +35,7 @@ class JobForm(forms.ModelForm):
         )
         self.fields['salary'].widget.attrs.update(
             {
-                'placeholder': '$800 - $1200',
+                'placeholder': '800 - 1200 rupees',
             }
         )
         self.fields['tags'].widget.attrs.update(
@@ -51,7 +51,7 @@ class JobForm(forms.ModelForm):
         )        
         self.fields['company_name'].widget.attrs.update(
             {
-                'placeholder': 'Company Name',
+                'placeholder': 'University Name',
             }
         )           
         self.fields['url'].widget.attrs.update(
@@ -126,7 +126,7 @@ class JobEditForm(forms.ModelForm):
         self.fields['description'].label = "Job Description :"
         # self.fields['tags'].label = "Tags :"
         self.fields['last_date'].label = "Dead Line :"
-        self.fields['company_name'].label = "Company Name :"
+        self.fields['company_name'].label = "University Name :"
         self.fields['url'].label = "Website :"
 
 
@@ -157,7 +157,7 @@ class JobEditForm(forms.ModelForm):
         )        
         self.fields['company_name'].widget.attrs.update(
             {
-                'placeholder': 'Company Name',
+                'placeholder': 'University Name',
             }
         )           
         self.fields['url'].widget.attrs.update(

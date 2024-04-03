@@ -1,6 +1,7 @@
 from django.urls import path
 from account import views
-
+from django.conf.urls.static import static
+from django.conf import settings
 app_name = "account"
 
 urlpatterns = [
@@ -10,4 +11,5 @@ urlpatterns = [
     path('profile/edit/<int:id>/', views.employee_edit_profile, name='edit-profile'),
     path('login/', views.user_logIn, name='login'),
     path('logout/', views.user_logOut, name='logout'),
-]
+    
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

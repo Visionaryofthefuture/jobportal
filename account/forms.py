@@ -17,6 +17,9 @@ class EmployeeRegistrationForm(UserCreationForm):
         self.fields['password2'].label = "Confirm Password :"
         self.fields['email'].label = "Email :"
         self.fields['gender'].label = "Gender :"
+        self.fields['linkedIn_url'].label = "LinkedIn"
+        self.fields['resume'].label = "Resume"
+
 
         self.fields['first_name'].widget.attrs.update(
             {
@@ -43,12 +46,22 @@ class EmployeeRegistrationForm(UserCreationForm):
                 'placeholder': 'Confirm Password',
             }
         )
+        self.fields['linkedIn_url'].widget.attrs.update(
+            {
+                'placeholder': 'Enter linkedin url',
+            }
+        )
+        self.fields['resume'].widget.attrs.update(
+            {
+                'placeholder': 'Select file for resume',
+            }
+        )
 
     class Meta:
 
         model=User
 
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'gender']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'gender', 'linkedIn_url', 'resume']
 
     def clean_gender(self):
         gender = self.cleaned_data.get('gender')
@@ -69,19 +82,19 @@ class EmployerRegistrationForm(UserCreationForm):
         UserCreationForm.__init__(self, *args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
-        self.fields['first_name'].label = "Company Name"
-        self.fields['last_name'].label = "Company Address"
+        self.fields['first_name'].label = "University Name"
+        self.fields['last_name'].label = "University Address"
         self.fields['password1'].label = "Password"
         self.fields['password2'].label = "Confirm Password"
 
         self.fields['first_name'].widget.attrs.update(
             {
-                'placeholder': 'Enter Company Name',
+                'placeholder': 'Enter University Name',
             }
         )
         self.fields['last_name'].widget.attrs.update(
             {
-                'placeholder': 'Enter Company Address',
+                'placeholder': 'Enter University Address',
             }
         )
         self.fields['email'].widget.attrs.update(
@@ -103,7 +116,7 @@ class EmployerRegistrationForm(UserCreationForm):
 
         model=User
 
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2',]
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
 
     def save(self, commit=True):

@@ -1,9 +1,11 @@
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect , get_object_or_404
 from django.urls import reverse, reverse_lazy
+from django.http import FileResponse
+
 
 from account.forms import *
 from jobapp.permission import user_is_employee 
@@ -28,18 +30,22 @@ def employee_registration(request):
     Handle Employee Registration
 
     """
-    form = EmployeeRegistrationForm(request.POST or None)
-    if form.is_valid():
-        form = form.save()
-        return redirect('account:login')
-    context={
-        
-            'form':form
-        }
+    if request.method == 'POST':
+        form = EmployeeRegistrationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = form.save()
+            return redirect('account:login')
+       
+    else:
+        form = EmployeeRegistrationForm()
 
+    context={
+        'form':form
+    }
     return render(request,'account/employee-registration.html',context)
 
 
+    
 def employer_registration(request):
 
     """

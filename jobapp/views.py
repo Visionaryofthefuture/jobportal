@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -67,11 +68,11 @@ def job_list_View(request):
     """
 
     """
-    job_list = Job.objects.filter(is_published=True,is_closed=False).order_by('-timestamp')
+    job_list = Job.objects.filter(is_closed = False).order_by('-timestamp')
     paginator = Paginator(job_list, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
+    print("Page number:", page_number)  # Add this line for debugging
     context = {
 
         'page_obj': page_obj,

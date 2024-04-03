@@ -26,12 +26,11 @@
             <div class="border p-4 rounded">
               <ul class="list-unstyled block__47528 mb-0">
                 <li><span class="active">Graphic Design</span></li>
-                <li><a href="#">Topic 1</a></li>
-                <li><a href="#">Topic 2</a></li>
-          
+                <li><a href = "{{applicant.linkedIn_url}}">LinkedIn Profile</a></li>
+                <li><a href = "{{applicant.resume.url}}" download>Resume</a></li>
               </ul>
             </div>
-          </div>
+          </div> 
           <div class="col-lg-8">
             <span class="text-primary d-block mb-5"><span class="icon-magnet display-1"></span></span>
             <h2 class="mb-4">{{ applicant.get_full_name }}</h2>
